@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catapult Control</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="privacy-overlay" id="privacyOverlay" aria-hidden="true">
+    <div class="privacy-card" role="dialog" aria-labelledby="privacyTitle" aria-modal="true">
+      <h2 id="privacyTitle">Privacy Notice</h2>
+      <p>
+        This app connects to a Bluetooth-enabled Arduino catapult and stores your scheduling
+        preferences locally in this browser. By continuing, you acknowledge that you are
+        responsible for safe operation of the device.
+      </p>
+      <button class="primary" id="agreePrivacy">I Agree</button>
+    </div>
+  </div>
+
+  <header class="app-header">
+    <div>
+      <h1>Catapult Control</h1>
+      <p>Bluetooth control for a 3-servo Arduino catapult.</p>
+    </div>
+    <button class="secondary" id="bluetoothButton">Connect Bluetooth</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel" id="authPanel">
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="signup">Sign Up</button>
+      </div>
+      <div class="tab-content active" id="login">
+        <label>
+          Email
+          <input type="email" placeholder="pilot@catapult.com" />
+        </label>
+        <label>
+          Password
+          <input type="password" placeholder="••••••••" />
+        </label>
+        <button class="primary">Login</button>
+      </div>
+      <div class="tab-content" id="signup">
+        <label>
+          Name
+          <input type="text" placeholder="Avery Archer" />
+        </label>
+        <label>
+          Email
+          <input type="email" placeholder="pilot@catapult.com" />
+        </label>
+        <label>
+          Password
+          <input type="password" placeholder="Create a password" />
+        </label>
+        <button class="primary">Create Account</button>
+      </div>
+    </section>
+
+    <section class="panel" id="profilePanel">
+      <h2>Profile</h2>
+      <div class="profile-grid">
+        <label>
+          Display Name
+          <input type="text" value="Avery Archer" />
+        </label>
+        <label>
+          Default Launch Power
+          <input type="range" min="0" max="100" value="65" />
+        </label>
+        <label>
+          Default Direction
+          <select>
+            <option>Forward</option>
+            <option>Left Arc</option>
+            <option>Right Arc</option>
+          </select>
+        </label>
+        <label>
+          Alerts
+          <select>
+            <option>Push Notifications</option>
+            <option>Email</option>
+            <option>None</option>
+          </select>
+        </label>
+      </div>
+      <button class="secondary">Save Profile</button>
+    </section>
+
+    <section class="panel wide" id="controlPanel">
+      <h2>Main Controls</h2>
+      <div class="control-grid">
+        <div class="card">
+          <h3>Scheduler</h3>
+          <label>
+            Launch Date &amp; Time
+            <input type="datetime-local" />
+          </label>
+          <label>
+            Direction (0° - 180°)
+            <input type="range" min="0" max="180" value="90" />
+          </label>
+          <label>
+            Inclination (0° - 75°)
+            <input type="range" min="0" max="75" value="45" />
+          </label>
+          <label>
+            Tension (0 - 100%)
+            <input type="range" min="0" max="100" value="70" />
+          </label>
+          <button class="primary">Schedule Launch</button>
+        </div>
+        <div class="card">
+          <h3>Manual Servo Control</h3>
+          <label>
+            Release Servo
+            <input type="range" min="0" max="180" value="0" />
+          </label>
+          <label>
+            Tension Servo
+            <input type="range" min="0" max="180" value="120" />
+          </label>
+          <label>
+            Base Turn Servo
+            <input type="range" min="0" max="180" value="90" />
+          </label>
+          <div class="button-row">
+            <button class="secondary">Arm Catapult</button>
+            <button class="primary">Release</button>
+          </div>
+        </div>
+      </div>
+      <div class="servo-map">
+        <h3>Servo Map</h3>
+        <ul>
+          <li><strong>Release Servo:</strong> triggers launch release.</li>
+          <li><strong>Tension Servo:</strong> adjusts the catapult draw.</li>
+          <li><strong>Base Turn Servo:</strong> rotates the base up to 180°.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div>
+      <h4>Credits</h4>
+      <p>Designed for the Arduino Catapult project.</p>
+    </div>
+    <button class="link" id="openCredits">View Credits</button>
+  </footer>
+
+  <div class="credits-drawer" id="creditsDrawer" aria-hidden="true">
+    <div class="credits-card">
+      <div class="credits-header">
+        <h3>Credits</h3>
+        <button class="link" id="closeCredits">Close</button>
+      </div>
+      <ul>
+        <li>UI/UX: Catapult Control Team</li>
+        <li>Hardware: Arduino + 3 Micro Servos</li>
+        <li>Bluetooth Integration: Web Bluetooth API (planned)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
