@@ -6,6 +6,9 @@ const creditsDrawer = document.getElementById("creditsDrawer");
 const openCredits = document.getElementById("openCredits");
 const closeCredits = document.getElementById("closeCredits");
 const bluetoothButton = document.getElementById("bluetoothButton");
+const cadenceSelect = document.getElementById("cadenceSelect");
+const basicSchedule = document.getElementById("basicSchedule");
+const customSchedule = document.getElementById("customSchedule");
 
 const activateTab = (targetId) => {
   tabs.forEach((tab) => {
@@ -49,5 +52,19 @@ bluetoothButton.addEventListener("click", () => {
     bluetoothButton.textContent = "Bluetooth Ready";
   }, 1200);
 });
+
+const updateCadenceView = () => {
+  if (!cadenceSelect || !basicSchedule || !customSchedule) {
+    return;
+  }
+  const isCustom = cadenceSelect.value === "custom";
+  basicSchedule.classList.toggle("hidden", isCustom);
+  customSchedule.classList.toggle("hidden", !isCustom);
+};
+
+if (cadenceSelect) {
+  cadenceSelect.addEventListener("change", updateCadenceView);
+  updateCadenceView();
+}
 
 showPrivacy();
