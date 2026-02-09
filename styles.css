@@ -130,6 +130,61 @@ select {
   gap: 12px;
 }
 
+.scheduler-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.scheduler-grid.hidden {
+  display: none;
+}
+
+.sequence-info {
+  background: #eff6ff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.sequence-info h4 {
+  margin: 0;
+}
+
+.sequence-info ol {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.helper-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #52606d;
+}
+
+.sequence-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.sequence-row {
+  display: grid;
+  grid-template-columns: 32px repeat(3, minmax(90px, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+.sequence-row input[type="number"] {
+  width: 100%;
+}
+
+.sequence-header {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #52606d;
+}
+
 .button-row {
   display: flex;
   gap: 12px;

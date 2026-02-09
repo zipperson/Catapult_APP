@@ -69,7 +69,7 @@
           <input type="text" value="Avery Archer" />
         </label>
         <label>
-          Default Launch Power
+          Default Wire Tension
           <input type="range" min="0" max="100" value="65" />
         </label>
         <label>
@@ -102,17 +102,69 @@
             <input type="datetime-local" />
           </label>
           <label>
-            Direction (0° - 180°)
-            <input type="range" min="0" max="180" value="90" />
+            Cadence
+            <select id="cadenceSelect">
+              <option value="every-2">Every 2 hours</option>
+              <option value="every-3" selected>Every 3 hours</option>
+              <option value="custom">Custom sequence</option>
+            </select>
           </label>
-          <label>
-            Inclination (0° - 75°)
-            <input type="range" min="0" max="75" value="45" />
-          </label>
-          <label>
-            Tension (0 - 100%)
-            <input type="range" min="0" max="100" value="70" />
-          </label>
+          <div class="scheduler-grid" id="basicSchedule">
+            <label>
+              Repeat Count
+              <input type="number" min="1" value="3" />
+            </label>
+            <label>
+              Base Rotation (0° - 180°)
+              <input type="range" min="0" max="180" value="90" />
+            </label>
+            <label>
+              Wire Tension (0 - 100%)
+              <input type="range" min="0" max="100" value="70" />
+            </label>
+          </div>
+          <div class="scheduler-grid hidden" id="customSchedule">
+            <p class="helper-text">
+              Set a custom repeat count, base rotation, and wire tension for each step.
+            </p>
+            <div class="sequence-grid">
+              <div class="sequence-row sequence-header">
+                <span>Step</span>
+                <span>Repeats</span>
+                <span>Rotation</span>
+                <span>Tension</span>
+              </div>
+              <div class="sequence-row">
+                <span>1</span>
+                <input type="number" min="1" value="2" />
+                <input type="range" min="0" max="180" value="75" />
+                <input type="range" min="0" max="100" value="60" />
+              </div>
+              <div class="sequence-row">
+                <span>2</span>
+                <input type="number" min="1" value="2" />
+                <input type="range" min="0" max="180" value="105" />
+                <input type="range" min="0" max="100" value="75" />
+              </div>
+              <div class="sequence-row">
+                <span>3</span>
+                <input type="number" min="1" value="1" />
+                <input type="range" min="0" max="180" value="130" />
+                <input type="range" min="0" max="100" value="80" />
+              </div>
+            </div>
+          </div>
+          <div class="sequence-info">
+            <h4>Launch Sequence</h4>
+            <ol>
+              <li>Base rotates to the target direction.</li>
+              <li>Motor tensions the wire.</li>
+              <li>Release motor opens the stopper to throw.</li>
+              <li>Tension motor relaxes.</li>
+              <li>Motor untensions to reset the stopper.</li>
+            </ol>
+            <p class="helper-text">Only wire tension is adjustable; launch strength is derived from tension.</p>
+          </div>
           <button class="primary">Schedule Launch</button>
         </div>
         <div class="card">
@@ -122,7 +174,7 @@
             <input type="range" min="0" max="180" value="0" />
           </label>
           <label>
-            Tension Servo
+            Wire Tension Servo
             <input type="range" min="0" max="180" value="120" />
           </label>
           <label>
