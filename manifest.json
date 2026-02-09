@@ -1,0 +1,8 @@
+{
+  "name": "Catapult Control",
+  "short_name": "Catapult",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f5f6fa",
+  "theme_color": "#1f6feb"
+}
